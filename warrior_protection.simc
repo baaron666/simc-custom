@@ -1,4 +1,4 @@
-########################################
+################ HEKILI ################
 
 actions+=/pummel
 actions+=/call_action_list,name=mitigation
@@ -14,19 +14,24 @@ actions.mitigation+=/rallying_cry,if=tanking&incoming_damage_5s>rallying_cry_dam
 actions.mitigation+=/victory_rush,if=health.pct<victory_rush_health_pct&talent.impending_victory.disabled
 actions.mitigation+=/impending_victory,if=health.pct<victory_rush_health_pct&talent.impending_victory.enabled
 
-########################################
+################# SIMC #################
 
 actions.precombat=snapshot_stats
 actions=auto_attack
-actions+=/ignore_pain,use_off_gcd=1,if=buff.ignore_pain.remains<=0
 
-########################################
+actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=2
+actions+=/ignore_pain,use_off_gcd=1,if=buff.ignore_pain.remains<=1
+actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=(6+2*talent.enduring_defenses.enabled)+((6+2*talent.enduring_defenses.enabled)>?(cooldown.shield_charge.remains+86400*!talent.champions_bulwark.enabled))
+
+################ SHARED ################
 
 actions.precombat+=/battle_stance,toggle=on
 # actions.precombat+=/defensive_stance,toggle=on,if=talent.fight_through_the_flames.enabled
 actions.precombat+=/battle_shout
 
 actions+=/charge,if=time=0|movement.distance>8
+
+actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=0
 
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.avatar.ready&rage.deficit<=10+10*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.ravager.remains<=gcd.remains&rage.deficit<=10+10*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
@@ -54,12 +59,9 @@ actions+=/demolish,if=talent.sudden_death.enabled&buff.colossal_might.stack>=7
 actions+=/demolish,if=!talent.sudden_death.enabled&buff.colossal_might.stack>=3
 actions+=/thunderous_roar
 actions+=/shield_charge
-# actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=2
-actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=(6+2*talent.enduring_defenses.enabled)+((6+2*talent.enduring_defenses.enabled)>?(cooldown.shield_charge.remains+86400*!talent.champions_bulwark.enabled))
 
 actions+=/run_action_list,name=colossus,if=talent.demolish.enabled
 actions+=/run_action_list,name=thane,if=talent.lightning_strikes.enabled
-
 
 actions.colossus+=/revenge,if=spell_targets.revenge>=4-(buff.colossal_might.stack>=6)
 actions.colossus+=/shield_slam
@@ -69,7 +71,6 @@ actions.colossus+=/execute
 actions.colossus+=/revenge,if=buff.colossal_might.stack>=10
 actions.colossus+=/thunder_clap,if=!buff.violent_outburst.up
 actions.colossus+=/revenge
-
 
 actions.thane+=/execute,if=talent.juggernaut.enabled
 actions.thane+=/thunder_blast,if=!buff.violent_outburst.up&spell_targets.thunder_clap<=1&buff.thunder_blast.stack=2
