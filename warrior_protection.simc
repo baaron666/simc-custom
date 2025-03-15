@@ -3,9 +3,9 @@
 actions+=/pummel
 actions+=/call_action_list,name=mitigation
 
-actions.mitigation+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=2
-actions.mitigation+=/ignore_pain,use_off_gcd=1,if=tanking&incoming_damage_5s>0.1*health.max&(buff.ignore_pain.remains<=1|buff.ignore_pain.stacks<=25)
-actions.mitigation+=/shield_block,use_off_gcd=1,if=tanking&incoming_damage_5s>0.1*health.max&buff.shield_block.remains<=(6+2*talent.enduring_defenses.enabled)+((6+2*talent.enduring_defenses.enabled)>?(cooldown.shield_charge.remains+86400*!talent.champions_bulwark.enabled))
+actions.mitigation+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=2&fight_remains>buff.shield_block.remains+0.5*buff.shield_block.duration
+actions.mitigation+=/ignore_pain,use_off_gcd=1,if=tanking&incoming_damage_5s>0.1*health.max&(buff.ignore_pain.remains<=1|buff.ignore_pain.stacks<=25)&fight_remains>0.5*buff.ignore_pain.duration
+actions.mitigation+=/shield_block,use_off_gcd=1,if=tanking&incoming_damage_5s>0.1*health.max&buff.shield_block.remains<=(6+2*talent.enduring_defenses.enabled)+((6+2*talent.enduring_defenses.enabled)>?(cooldown.shield_charge.remains+86400*!talent.champions_bulwark.enabled))&fight_remains>buff.shield_block.remains+0.5*buff.shield_block.duration
 actions.mitigation+=/spell_reflection,use_off_gcd=1,if=!boss&tanking
 actions.mitigation+=/spell_block,use_off_gcd=1,if=!boss&tanking&incoming_magic_damage_5s>spell_block_damage_taken&health.pct<=spell_block_health_pct&!(buff.spell_reflection_defense.up)
 actions.mitigation+=/shield_wall,use_off_gcd=1,if=!boss&tanking&incoming_damage_5s>shield_wall_damage_taken&health.pct<=shield_wall_health_pct&!(buff.shield_wall.up|buff.last_stand.up)&buff.spell_block.remains<=25
@@ -19,9 +19,9 @@ actions.mitigation+=/impending_victory,if=health.pct<victory_rush_health_pct&tal
 actions.precombat=snapshot_stats
 actions=auto_attack
 
-actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=2
-actions+=/ignore_pain,use_off_gcd=1,if=buff.ignore_pain.remains<=1
-actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=(6+2*talent.enduring_defenses.enabled)+((6+2*talent.enduring_defenses.enabled)>?(cooldown.shield_charge.remains+86400*!talent.champions_bulwark.enabled))
+actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=2&fight_remains>buff.shield_block.remains+0.5*buff.shield_block.duration
+actions+=/ignore_pain,use_off_gcd=1,if=buff.ignore_pain.remains<=1&fight_remains>0.5*buff.ignore_pain.duration
+actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=(6+2*talent.enduring_defenses.enabled)+((6+2*talent.enduring_defenses.enabled)>?(cooldown.shield_charge.remains+86400*!talent.champions_bulwark.enabled))&fight_remains>buff.shield_block.remains+0.5*buff.shield_block.duration
 
 ################ SHARED ################
 
@@ -31,7 +31,7 @@ actions.precombat+=/battle_shout
 
 actions+=/charge,if=time=0|movement.distance>8
 
-actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=0
+actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=0&fight_remains>buff.shield_block.remains+0.5*buff.shield_block.duration
 
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.avatar.ready&rage.deficit<=10+10*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.ravager.remains<=gcd.remains&rage.deficit<=10+10*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
