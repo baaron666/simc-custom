@@ -38,7 +38,7 @@ actions+=/ignore_pain,use_off_gcd=1,if=cooldown.ravager.remains<=gcd.remains&rag
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.demoralizing_shout.remains<=gcd.remains&talent.booming_voice.enabled&rage.deficit<=10+20*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.champions_spear.remains<=gcd.remains&rage.deficit<=10+10*(1+talent.piercing_challenge.enabled)*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.shield_charge.remains<=gcd.remains&rage.deficit<=10+20*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/ignore_pain,use_off_gcd=1,if=cooldown.shield_slam.remains<=gcd.remains&(talent.lightning_strikes.enabled|talent.demolish.enabled&!((spell_targets.revenge>=4-(buff.colossal_might.stack>=6))))&rage.deficit<=10+(15+2*talent.heavy_repercussions.enabled+3*talent.practiced_strikes.enabled)*(1+0.5*buff.violent_outburst.up*(talent.demolish.enabled|talent.lightning_strikes.enabled&spell_targets.thunder_clap<5-buff.thunder_blast.up-buff.avatar.up*talent.unstoppable_force.enabled))*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
+actions+=/ignore_pain,use_off_gcd=1,if=cooldown.shield_slam.remains<=gcd.remains&rage.deficit<=10+(15+2*talent.heavy_repercussions.enabled+3*talent.practiced_strikes.enabled)*(1+0.5*buff.violent_outburst.up*(talent.demolish.enabled|talent.lightning_strikes.enabled&spell_targets.thunder_clap<5-buff.thunder_blast.up-buff.avatar.up*talent.unstoppable_force.enabled))*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.thunder_clap.remains<=gcd.remains&(talent.lightning_strikes.enabled|talent.demolish.enabled&!(!buff.violent_outburst.up&(cooldown.execute.remains<=gcd.remains|spell_targets.revenge>=3-(buff.colossal_might.stack>=6))|spell_targets.thunder_clap>=3&(spell_targets.revenge>=3-(buff.colossal_might.stack>=6))))&rage.deficit<=10+(5+(3+3*talent.thorims_might.enabled*talent.flashing_skies.enabled)*buff.thunder_blast.up)*(1+0.5*buff.violent_outburst.up*(talent.lightning_strikes.enabled&spell_targets.thunder_clap>=5-buff.thunder_blast.up-buff.avatar.up*talent.unstoppable_force.enabled))*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
 
 actions+=/avatar
@@ -56,14 +56,13 @@ actions+=/ravager
 actions+=/demoralizing_shout,if=talent.booming_voice.enabled
 actions+=/champions_spear
 actions+=/demolish,if=talent.sudden_death.enabled&buff.colossal_might.stack>=7
-actions+=/demolish,if=!talent.sudden_death.enabled&buff.colossal_might.stack>=3
+actions+=/demolish,if=!talent.sudden_death.enabled&buff.colossal_might.stack>=4
 actions+=/thunderous_roar
 actions+=/shield_charge
 
 actions+=/run_action_list,name=colossus,if=talent.demolish.enabled
 actions+=/run_action_list,name=thane,if=talent.lightning_strikes.enabled
 
-actions.colossus+=/revenge,if=spell_targets.revenge>=4-(buff.colossal_might.stack>=6)
 actions.colossus+=/shield_slam
 actions.colossus+=/revenge,if=spell_targets.revenge>=3-(buff.colossal_might.stack>=6)
 actions.colossus+=/thunder_clap,if=spell_targets.thunder_clap>=3
