@@ -8,10 +8,10 @@ actions.mitigation+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=1&
 actions.mitigation+=/ignore_pain,use_off_gcd=1,if=tanking&incoming_damage_5s>0.1*health.max&(buff.ignore_pain.remains<=1|buff.ignore_pain.stacks<=25)&fight_remains>6
 actions.mitigation+=/shield_block,use_off_gcd=1,if=tanking&incoming_damage_5s>0.1*health.max&buff.shield_block.remains<=5&fight_remains>buff.shield_block.remains+3
 actions.mitigation+=/spell_block,use_off_gcd=1,if=!boss&tanking&incoming_magic_damage_5s>spell_block_damage_taken&health.pct<=spell_block_health_pct&!buff.spell_reflection_defense.up
-actions.mitigation+=/shield_wall,use_off_gcd=1,if=!boss&tanking&incoming_damage_5s>shield_wall_damage_taken&health.pct<=shield_wall_health_pct&!buff.shield_wall.up&buff.spell_block.remains<=25&buff.last_stand.remains<=10&!(cooldown.shield_wall.full_recharge_time>30&cooldown.last_stand.ready)
-actions.mitigation+=/last_stand,use_off_gcd=1,if=!boss&tanking&incoming_damage_5s>last_stand_damage_taken&health.pct<=last_stand_health_pct&!buff.last_stand.up&buff.spell_block.remains<=25&buff.shield_wall.remains<=4
-actions.mitigation+=/victory_rush,if=health.pct<victory_rush_health_pct&talent.impending_victory.disabled
-actions.mitigation+=/impending_victory,if=health.pct<victory_rush_health_pct&talent.impending_victory.enabled
+actions.mitigation+=/shield_wall,use_off_gcd=1,if=!boss&tanking&incoming_damage_5s>shield_wall_damage_taken&health.pct<=shield_wall_health_pct&!buff.shield_wall.up&(!talent.immovable_object.enabled|!(cooldown.avatar.ready|buff.avatar.up&cooldown.last_stand.ready))&buff.spell_block.remains<=25&buff.last_stand.remains<=12&(cooldown.shield_wall.full_recharge_time<=30|!cooldown.last_stand.ready)
+actions.mitigation+=/last_stand,use_off_gcd=1,if=!boss&tanking&incoming_damage_5s>last_stand_damage_taken&health.pct<=last_stand_health_pct&!buff.last_stand.up&(!talent.immovable_object.enabled|!(cooldown.avatar.ready|buff.avatar.remains>16))&buff.spell_block.remains<=25&buff.shield_wall.remains<=4&buff.luck_of_the_draw.remains<=8
+actions.mitigation+=/victory_rush,if=health.pct<=victory_rush_health_pct&talent.impending_victory.disabled
+actions.mitigation+=/impending_victory,if=health.pct<=victory_rush_health_pct&talent.impending_victory.enabled
 
 ################# SIMC #################
 
