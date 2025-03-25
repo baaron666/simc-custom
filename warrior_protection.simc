@@ -5,8 +5,8 @@ actions+=/pummel
 actions+=/call_action_list,name=mitigation
 
 actions.mitigation+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=1&fight_remains>buff.shield_block.remains+3
-actions.mitigation+=/ignore_pain,use_off_gcd=1,if=tanking&incoming_damage_5s>0.1*health.max&(buff.ignore_pain.remains<=1|buff.ignore_pain.stacks<=25)&fight_remains>6
-actions.mitigation+=/shield_block,use_off_gcd=1,if=tanking&incoming_damage_5s>0.1*health.max&buff.shield_block.remains<=5&fight_remains>buff.shield_block.remains+3
+actions.mitigation+=/ignore_pain,use_off_gcd=1,if=tanking&incoming_damage_5s>0.1*health.max&buff.ignore_pain.remains<=0&fight_remains>6
+actions.mitigation+=/shield_block,use_off_gcd=1,if=tanking&incoming_damage_5s>0.1*health.max&buff.shield_block.remains<=10&fight_remains>buff.shield_block.remains+3
 actions.mitigation+=/spell_block,use_off_gcd=1,if=!boss&tanking&incoming_magic_damage_5s>spell_block_damage_taken&health.pct<=spell_block_health_pct&!buff.spell_reflection_defense.up
 actions.mitigation+=/shield_wall,use_off_gcd=1,if=!boss&tanking&incoming_damage_5s>shield_wall_damage_taken&health.pct<=shield_wall_health_pct&!buff.shield_wall.up&(!talent.immovable_object.enabled|!(cooldown.avatar.ready|buff.avatar.up&cooldown.last_stand.ready))&buff.spell_block.remains<=25&buff.last_stand.remains<=12&(cooldown.shield_wall.full_recharge_time<=30|!cooldown.last_stand.ready)
 actions.mitigation+=/last_stand,use_off_gcd=1,if=!boss&tanking&incoming_damage_5s>last_stand_damage_taken&health.pct<=last_stand_health_pct&!buff.last_stand.up&(!talent.immovable_object.enabled|!(cooldown.avatar.ready|buff.avatar.remains>16))&buff.spell_block.remains<=25&buff.shield_wall.remains<=4&buff.luck_of_the_draw.remains<=8
@@ -19,8 +19,8 @@ actions.precombat=snapshot_stats
 actions=auto_attack
 
 actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=1&fight_remains>buff.shield_block.remains+3
-actions+=/ignore_pain,use_off_gcd=1,if=buff.ignore_pain.remains<=1&fight_remains>6
-actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=5&fight_remains>buff.shield_block.remains+3
+actions+=/ignore_pain,use_off_gcd=1,if=buff.ignore_pain.remains<=0&fight_remains>6
+actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=10&fight_remains>buff.shield_block.remains+3
 
 ################ SHARED ################
 
@@ -32,13 +32,21 @@ actions+=/charge,if=time=0|movement.distance>8
 
 actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=0&fight_remains>buff.shield_block.remains+3
 
+actions+=/shield_block,use_off_gcd=1,if=cooldown.avatar.ready&rage.deficit<=10+10*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
+actions+=/shield_block,use_off_gcd=1,if=cooldown.ravager.remains<=gcd.remains&rage.deficit<=10+10*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
+actions+=/shield_block,use_off_gcd=1,if=cooldown.demoralizing_shout.remains<=gcd.remains&talent.booming_voice.enabled&rage.deficit<=10+20*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
+actions+=/shield_block,use_off_gcd=1,if=cooldown.champions_spear.remains<=gcd.remains&rage.deficit<=10+10*(1+talent.piercing_challenge.enabled)*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
+actions+=/shield_block,use_off_gcd=1,if=cooldown.shield_charge.remains<=gcd.remains&rage.deficit<=10+20*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
+actions+=/shield_block,use_off_gcd=1,if=cooldown.shield_slam.remains<=gcd.remains&rage.deficit<=10+(15+2*talent.heavy_repercussions.enabled+3*talent.practiced_strikes.enabled)*(1+0.5*buff.violent_outburst.up*(talent.demolish.enabled|talent.lightning_strikes.enabled&spell_targets.thunder_clap<5-buff.thunder_blast.up-buff.avatar.up*talent.unstoppable_force.enabled))*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
+actions+=/shield_block,use_off_gcd=1,if=cooldown.thunder_clap.remains<=gcd.remains&(talent.lightning_strikes.enabled|talent.demolish.enabled&!(!buff.violent_outburst.up&(buff.colossal_might.stack>=10|target.health.pct<20+15*talent.massacre.enabled|spell_targets.revenge>=3-(buff.colossal_might.stack>=6))|spell_targets.thunder_clap>=3&(spell_targets.revenge>=3-(buff.colossal_might.stack>=6))))&rage.deficit<=10+(5+(3+3*talent.thorims_might.enabled*talent.flashing_skies.enabled)*buff.thunder_blast.up)*(1+0.5*buff.violent_outburst.up*(talent.lightning_strikes.enabled&spell_targets.thunder_clap>=5-buff.thunder_blast.up-buff.avatar.up*talent.unstoppable_force.enabled))*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
+
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.avatar.ready&rage.deficit<=10+10*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.ravager.remains<=gcd.remains&rage.deficit<=10+10*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.demoralizing_shout.remains<=gcd.remains&talent.booming_voice.enabled&rage.deficit<=10+20*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.champions_spear.remains<=gcd.remains&rage.deficit<=10+10*(1+talent.piercing_challenge.enabled)*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.shield_charge.remains<=gcd.remains&rage.deficit<=10+20*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
 actions+=/ignore_pain,use_off_gcd=1,if=cooldown.shield_slam.remains<=gcd.remains&rage.deficit<=10+(15+2*talent.heavy_repercussions.enabled+3*talent.practiced_strikes.enabled)*(1+0.5*buff.violent_outburst.up*(talent.demolish.enabled|talent.lightning_strikes.enabled&spell_targets.thunder_clap<5-buff.thunder_blast.up-buff.avatar.up*talent.unstoppable_force.enabled))*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/ignore_pain,use_off_gcd=1,if=cooldown.thunder_clap.remains<=gcd.remains&(talent.lightning_strikes.enabled|talent.demolish.enabled&!(!buff.violent_outburst.up&(cooldown.execute.remains<=gcd.remains|spell_targets.revenge>=3-(buff.colossal_might.stack>=6))|spell_targets.thunder_clap>=3&(spell_targets.revenge>=3-(buff.colossal_might.stack>=6))))&rage.deficit<=10+(5+(3+3*talent.thorims_might.enabled*talent.flashing_skies.enabled)*buff.thunder_blast.up)*(1+0.5*buff.violent_outburst.up*(talent.lightning_strikes.enabled&spell_targets.thunder_clap>=5-buff.thunder_blast.up-buff.avatar.up*talent.unstoppable_force.enabled))*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
+actions+=/ignore_pain,use_off_gcd=1,if=cooldown.thunder_clap.remains<=gcd.remains&(talent.lightning_strikes.enabled|talent.demolish.enabled&!(!buff.violent_outburst.up&(buff.colossal_might.stack>=10|target.health.pct<20+15*talent.massacre.enabled|spell_targets.revenge>=3-(buff.colossal_might.stack>=6))|spell_targets.thunder_clap>=3&(spell_targets.revenge>=3-(buff.colossal_might.stack>=6))))&rage.deficit<=10+(5+(3+3*talent.thorims_might.enabled*talent.flashing_skies.enabled)*buff.thunder_blast.up)*(1+0.5*buff.violent_outburst.up*(talent.lightning_strikes.enabled&spell_targets.thunder_clap>=5-buff.thunder_blast.up-buff.avatar.up*talent.unstoppable_force.enabled))*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
 
 actions+=/avatar
 actions+=/use_items
@@ -63,12 +71,12 @@ actions+=/run_action_list,name=colossus,if=talent.demolish.enabled
 actions+=/run_action_list,name=thane,if=talent.lightning_strikes.enabled
 
 actions.colossus+=/shield_slam
-actions.colossus+=/revenge,if=spell_targets.revenge>=3-(buff.colossal_might.stack>=6)
+actions.colossus+=/revenge,if=spell_targets.revenge>=3-(buff.colossal_might.stack>=6)&(buff.revenge.up|(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=50)&(buff.ignore_pain.remains>0|fight_remains<=6|rage>=55))
 actions.colossus+=/thunder_clap,if=spell_targets.thunder_clap>=3
-actions.colossus+=/execute
-actions.colossus+=/revenge,if=buff.colossal_might.stack>=10
+actions.colossus+=/execute,if=buff.sudden_death.up|(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=70)&(buff.ignore_pain.remains>0|fight_remains<=6|rage>=75)
+actions.colossus+=/revenge,if=buff.colossal_might.stack>=10&(buff.revenge.up|(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=50)&(buff.ignore_pain.remains>0|fight_remains<=6|rage>=55))
 actions.colossus+=/thunder_clap,if=!buff.violent_outburst.up
-actions.colossus+=/revenge
+actions.colossus+=/revenge,if=buff.revenge.up|(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=50)&(buff.ignore_pain.remains>0|fight_remains<=6|rage>=55)
 
 actions.thane+=/execute,if=talent.juggernaut.enabled
 actions.thane+=/thunder_blast,if=!buff.violent_outburst.up&spell_targets.thunder_clap<=1&buff.thunder_blast.stack=2
