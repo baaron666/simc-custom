@@ -1,3 +1,47 @@
+warrior=666
+spec=protection
+level=80
+race=mechagnome
+role=tank
+talents=CkEAAAAAAAAAAAAAAAAAAAAAAIGAAAAmZmxMzMYWmZZmZmtFGjRjZZmZYsMmZGWmZGmBDDAAAAAAMzAAsstBAsZGDLkBmhFawC
+
+head=enforcers_backalley_faceshield,id=229235,bonus_id=7981/12042/5878/11996,gem_id=213743
+# head=fullthrottle_facerig,id=228858,bonus_id=10356/1527/6935,gem_id=213743
+neck=flickering_glowtorc,id=221103,bonus_id=3170/11996/11964/8781,gem_id=213485/213485
+# neck=semicharmed_amulet,id=228841,bonus_id=7981/12042/5878/11996,gem_id=213485/213485
+# neck=strapped_rescuekeg,id=221060,bonus_id=657/12042/5878/7981/11996,gem_id=213485/213485
+shoulders=enforcers_backalley_shoulderplates,id=229233,bonus_id=1527/11996
+back=trashmasters_mantle,id=199921,bonus_id=657/12042/5878/7981/11996,enchant=chant_of_winged_grace_3
+# back=undercircuit_racing_flag,id=228839,bonus_id=1527/11996/11964,enchant=chant_of_winged_grace_3
+chest=slashproof_business_plate,id=221069,bonus_id=657/12042/5878/7981/11996,enchant=crystalline_radiance_3
+# chest=enforcers_backalley_vestplate,id=229238,bonus_id=1527/11996,enchant=crystalline_radiance_3
+# chest=bulletproof_vestplate,id=228851,bonus_id=7981/12042/5878/11996,enchant=crystalline_radiance_3
+wrists=revvedup_vambraces,id=228868,bonus_id=1527/11996/11964/1808,gem_id=213485
+# wrists=everforged_vambraces,id=222435,bonus_id=12040/1515/8790,gem_id=213485
+hands=enforcers_backalley_crushers,id=229236,bonus_id=1527/11996
+waist=enforcers_backalley_girdle,id=229232,bonus_id=1527/11996/1808,gem_id=213485
+# waist=heaviestweight_title_belt,id=228873,bonus_id=7981/12042/5878/11996
+# waist=venture_contractors_floodlight,id=234505,bonus_id=657/12042/5878/7981/11996
+legs=enforcers_backalley_chausses,id=229234,bonus_id=1527/11996,enchant=defenders_armor_kit_3
+feet=everforged_sabatons,id=222429,bonus_id=10421/9633/8902/12043/12040/1485/11109/8960,enchant=defenders_march_3,crafted_stats=36/32
+# feet=sabatons_of_rampaging_elements,id=159679,bonus_id=657/12042/5878/7981/11996,enchant=defenders_march_3
+# feet=riks_walkin_boots,id=228874,bonus_id=7981/12042/5878/11996,enchant=defenders_march_3
+# feet=pyroclastic_greatboots,id=168972,bonus_id=657/12042/5878/7981/11996,enchant=defenders_march_3
+finger1=bloodoath_signet,id=178871,bonus_id=657/12042/5878/7981/11996,gem_id=213485/213485,enchant=radiant_haste_3
+finger2=wicks_golden_loop,id=221099,bonus_id=7981/12042/5878/11996,gem_id=213485/213485,enchant=radiant_haste_3
+# finger1=the_jastor_diamond,id=231265,bonus_id=10356/1527/6935/1808,gem_id=213485/213485,enchant=radiant_haste_3
+# finger1=faded_championship_ring,id=228840,bonus_id=1527/11996/11964/8781,gem_id=213485/213485,enchant=radiant_haste_3
+trinket1=improvised_seaforium_pacemaker,id=232541,bonus_id=657/12042/5878/7981/11996
+trinket2=tome_of_lights_devotion,id=219309,bonus_id=657/12042/5878/7981/11996
+# trinket1=eye_of_kezan,id=230198,bonus_id=1527/11996/11964
+# trinket1=house_of_cards,id=230027,bonus_id=10356/1527
+main_hand=everforged_longsword,id=222440,bonus_id=10421/9633/8902/12043/12040/1485/11300/8960,enchant=authority_of_the_depths_3,crafted_stats=36/32
+# main_hand=tearing_sawtooth_blade,id=169608,bonus_id=657/12042/5878/7981/11996
+# main_hand=remixed_ignition_saber,id=228895,bonus_id=7981/12042/5878/11996
+off_hand=barricade_of_the_endless_empire,id=178867,bonus_id=657/12042/5878/7981/11996
+# off_hand=titan_of_industry,id=228889,bonus_id=1527/11996/11964
+
+
 ################ HEKILI ################
 
 actions+=/spell_reflection,use_off_gcd=1
