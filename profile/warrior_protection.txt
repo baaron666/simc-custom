@@ -3,7 +3,15 @@ spec=protection
 level=80
 race=mechagnome
 role=tank
+
+# Key CL
 talents=CkEAAAAAAAAAAAAAAAAAAAAAAIGAAAAmZmxMzMYWmZZmZmtFGjRjZZmZYsMmZGWmZGmBDDAAAAAAMzAAsstBAsZGDLkBmhFawC
+# Key MT
+# talents=CkEAAAAAAAAAAAAAAAAAAAAAAIGAAAAmZmxMzMMzyMLzMzsxMGjGzyMzwYZghtZmhZmxwAAAAAAAzMAALbbAMwGssY0YGAzWwG
+# Raid CL
+# talents=CkEAAAAAAAAAAAAAAAAAAAAAAoxAAAAwMzMmZmBzyMLzMzstZGjRjZZmZYsMwwyMzwMzYYAAAAAAAzAAsstBAsZGDbkBmhFawC
+# Raid MT
+# talents=CkEAAAAAAAAAAAAAAAAAAAAAAoxAAAAwMzMmZmBzyMLzMzstZGjZaYZmZYsMww2MzwMzYYAAAAAAAzAAsstBwAbwyiRjZAMbBbA
 
 head=enforcers_backalley_faceshield,id=229235,bonus_id=7981/12042/5878/11996,gem_id=213743
 # head=fullthrottle_facerig,id=228858,bonus_id=10356/1527/6935,gem_id=213743
