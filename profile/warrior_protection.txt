@@ -13,9 +13,9 @@ talents=CkEAAAAAAAAAAAAAAAAAAAAAAIGAAAAmZmxMzMYWmZZmZmtFGjRjZZmZYsMmZGWmZGmBDDAA
 # Raid MT
 # talents=CkEAAAAAAAAAAAAAAAAAAAAAAoxAAAAwMzMmZmBzyMLzMzstZGjZaYZmZYsMww2MzwMzYYAAAAAAAzAAsstBwAbwyiRjZAMbBbA
 # Raid CL Juggernaut
-# talents=CkEAAAAAAAAAAAAAAAAAAAAAAoxAAAAwMzMmZmBzyMLzMzstZGjRjZZmZYsMwwyMzwMzYYAAAAAAAzAAsstBAsZGDbkBmhFawC
-# Raid MT Juggernaut
 # talents=CkEAAAAAAAAAAAAAAAAAAAAAAoxAAAAwMzMmZmBzyMbzMzstZGjRjZZmZYsMwwyMzwMzYYAAAAAAAzAAsttBAsZGDbkBmhFawC
+# Raid MT Juggernaut
+# talents=CkEAAAAAAAAAAAAAAAAAAAAAAoxAAAAwMzMmZmBzyMbzMzstZGjZaYZmZYsMww2MzwMzYYAAAAAAAzAAsttBwAbwyiRjZAMbBbA
 
 head=enforcers_backalley_faceshield,id=229235,bonus_id=7981/12042/5878/11996,gem_id=213743
 # head=fullthrottle_facerig,id=228858,bonus_id=10356/1527/6935,gem_id=213743
