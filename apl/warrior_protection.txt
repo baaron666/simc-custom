@@ -1,25 +1,7 @@
-################ HEKILI ################
-
-actions.precombat+=/defensive_stance,toggle=on
-
-actions+=/spell_reflection,use_off_gcd=1
-actions+=/pummel
-actions+=/call_action_list,name=mitigation
-
-actions.mitigation+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=1&fight_remains>buff.shield_block.remains+3
-actions.mitigation+=/ignore_pain,use_off_gcd=1,if=tanking&incoming_damage_5s>0.1*health.max&buff.ignore_pain.remains<=0&fight_remains>6
-actions.mitigation+=/shield_block,use_off_gcd=1,if=tanking&incoming_physical_damage_5s>0.1*health.max&buff.shield_block.remains<=10&fight_remains>buff.shield_block.remains+3
-actions.mitigation+=/shield_wall,use_off_gcd=1,if=!boss&tanking&incoming_damage_5s>shield_wall_damage_taken&health.pct<=shield_wall_health_pct&!buff.shield_wall.up&(!talent.immovable_object.enabled|!(cooldown.avatar.ready|buff.avatar.up&cooldown.last_stand.ready))&buff.last_stand.remains<=12&(cooldown.shield_wall.full_recharge_time<=30|!cooldown.last_stand.ready)
-actions.mitigation+=/last_stand,use_off_gcd=1,if=!boss&tanking&incoming_damage_5s>last_stand_damage_taken&health.pct<=last_stand_health_pct&!buff.last_stand.up&(!talent.immovable_object.enabled|!(cooldown.avatar.ready|buff.avatar.remains>16))&buff.shield_wall.remains<=4&buff.luck_of_the_draw.remains<=8
-actions.mitigation+=/victory_rush,if=health.pct<=victory_rush_health_pct&talent.impending_victory.disabled
-actions.mitigation+=/impending_victory,if=health.pct<=victory_rush_health_pct&talent.impending_victory.enabled
-
-################# SIMC #################
-
 actions.precombat=snapshot_stats
 
-actions.precombat+=/defensive_stance,toggle=on
-# actions.precombat+=/battle_stance,toggle=on
+# actions.precombat+=/defensive_stance,toggle=on
+actions.precombat+=/battle_stance,toggle=on
 
 actions=auto_attack
 
@@ -27,29 +9,25 @@ actions+=/shield_block,use_off_gcd=1,if=buff.defensive_stance.up&buff.shield_blo
 actions+=/ignore_pain,use_off_gcd=1,if=buff.defensive_stance.up&buff.ignore_pain.remains<=0&fight_remains>6
 actions+=/shield_block,use_off_gcd=1,if=buff.defensive_stance.up&buff.shield_block.remains<=10&fight_remains>buff.shield_block.remains+3
 
-################ SHARED ################
-
 actions.precombat+=/battle_shout
 
 actions+=/charge,if=time=0|movement.distance>8
 
 actions+=/shield_block,use_off_gcd=1,if=buff.shield_block.remains<=1&fight_remains>buff.shield_block.remains+3
 
-actions+=/shield_block,use_off_gcd=1,if=cooldown.avatar.ready&rage.deficit<=10+10*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/shield_block,use_off_gcd=1,if=cooldown.ravager.remains<=gcd.remains&rage.deficit<=10+10*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/shield_block,use_off_gcd=1,if=cooldown.demoralizing_shout.remains<=gcd.remains&talent.booming_voice.enabled&rage.deficit<=10+20*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/shield_block,use_off_gcd=1,if=cooldown.champions_spear.remains<=gcd.remains&rage.deficit<=10+10*(1+talent.piercing_challenge.enabled)*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/shield_block,use_off_gcd=1,if=cooldown.shield_charge.remains<=gcd.remains&rage.deficit<=10+20*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/shield_block,use_off_gcd=1,if=cooldown.shield_slam.remains<=gcd.remains&(talent.lightning_strikes.enabled&!(buff.sudden_death.up|rage>=20&(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=70)&(buff.battle_stance.up|buff.ignore_pain.remains>0|fight_remains<=6|rage>=75)&(talent.massacre.enabled&target.health.pct<35|target.health.pct<20))|talent.demolish.enabled)&rage.deficit<=10+(15+2*talent.heavy_repercussions.enabled+3*talent.practiced_strikes.enabled)*(1+0.5*buff.violent_outburst.up*!(buff.thunder_blast.up&(buff.severe_thunder.up|buff.thunder_blast.stack=2|spell_targets.thunder_clap>=3)))*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/shield_block,use_off_gcd=1,if=cooldown.thunder_clap.remains<=gcd.remains&(talent.lightning_strikes.enabled&!(buff.sudden_death.up|rage>=20&(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=70)&(buff.battle_stance.up|buff.ignore_pain.remains>0|fight_remains<=6|rage>=75)&(talent.massacre.enabled&target.health.pct<35|target.health.pct<20))|talent.demolish.enabled&!buff.violent_outburst.up&((active_enemies>=4-(!talent.heavy_handed.enabled)&dot.rend.refreshable&fight_remains>=10|!(buff.sudden_death.up|rage>=20&(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=70)&(buff.battle_stance.up|buff.ignore_pain.remains>0|fight_remains<=6|rage>=75)&(talent.massacre.enabled&target.health.pct<35|target.health.pct<20)))&(dot.rend.refreshable&fight_remains>=10|!(active_enemies>=3-(buff.colossal_might.stack>=10))|!(buff.revenge.up|(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=50)&(buff.battle_stance.up|buff.ignore_pain.remains>0|fight_remains<=6|rage>=55)))))&rage.deficit<=10+(5+(3+3*talent.thorims_might.enabled*talent.flashing_skies.enabled)*buff.thunder_blast.up)*(1+0.5*buff.violent_outburst.up*(buff.thunder_blast.up&(buff.severe_thunder.up|buff.thunder_blast.stack=2|spell_targets.thunder_clap>=3|cooldown.shield_slam.remains>gcd.remains)))*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
+actions+=/shield_block,use_off_gcd=1,if=cooldown.ravager.remains<=gcd.remains&rage.deficit<=10+10
+actions+=/shield_block,use_off_gcd=1,if=cooldown.demoralizing_shout.remains<=gcd.remains&talent.booming_voice.enabled&rage.deficit<=10+20
+actions+=/shield_block,use_off_gcd=1,if=cooldown.champions_spear.remains<=gcd.remains&rage.deficit<=10+10
+actions+=/shield_block,use_off_gcd=1,if=cooldown.shield_charge.remains<=gcd.remains&rage.deficit<=10+20
+actions+=/shield_block,use_off_gcd=1,if=cooldown.shield_slam.remains<=gcd.remains&rage.deficit<=10+(15+2*talent.heavy_repercussions.enabled+3*talent.practiced_strikes.enabled)*(1+0.5*buff.violent_outburst.up)
+actions+=/shield_block,use_off_gcd=1,if=cooldown.thunder_clap.remains<=gcd.remains&rage.deficit<=10+(5+(2+3*talent.thorims_might.enabled*talent.flashing_skies.enabled)*buff.thunder_blast.up)
 
-actions+=/ignore_pain,use_off_gcd=1,if=cooldown.avatar.ready&rage.deficit<=10+10*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/ignore_pain,use_off_gcd=1,if=cooldown.ravager.remains<=gcd.remains&rage.deficit<=10+10*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/ignore_pain,use_off_gcd=1,if=cooldown.demoralizing_shout.remains<=gcd.remains&talent.booming_voice.enabled&rage.deficit<=10+20*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/ignore_pain,use_off_gcd=1,if=cooldown.champions_spear.remains<=gcd.remains&rage.deficit<=10+10*(1+talent.piercing_challenge.enabled)*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/ignore_pain,use_off_gcd=1,if=cooldown.shield_charge.remains<=gcd.remains&rage.deficit<=10+20*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/ignore_pain,use_off_gcd=1,if=cooldown.shield_slam.remains<=gcd.remains&(talent.lightning_strikes.enabled&!(buff.sudden_death.up|rage>=20&(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=70)&(buff.battle_stance.up|buff.ignore_pain.remains>0|fight_remains<=6|rage>=75)&(talent.massacre.enabled&target.health.pct<35|target.health.pct<20))|talent.demolish.enabled)&rage.deficit<=10+(15+2*talent.heavy_repercussions.enabled+3*talent.practiced_strikes.enabled)*(1+0.5*buff.violent_outburst.up*!(buff.thunder_blast.up&(buff.severe_thunder.up|buff.thunder_blast.stack=2|spell_targets.thunder_clap>=3)))*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
-actions+=/ignore_pain,use_off_gcd=1,if=cooldown.thunder_clap.remains<=gcd.remains&(talent.lightning_strikes.enabled&!(buff.sudden_death.up|rage>=20&(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=70)&(buff.battle_stance.up|buff.ignore_pain.remains>0|fight_remains<=6|rage>=75)&(talent.massacre.enabled&target.health.pct<35|target.health.pct<20))|talent.demolish.enabled&!buff.violent_outburst.up&((active_enemies>=4-(!talent.heavy_handed.enabled)&dot.rend.refreshable&fight_remains>=10|!(buff.sudden_death.up|rage>=20&(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=70)&(buff.battle_stance.up|buff.ignore_pain.remains>0|fight_remains<=6|rage>=75)&(talent.massacre.enabled&target.health.pct<35|target.health.pct<20)))&(dot.rend.refreshable&fight_remains>=10|!(active_enemies>=3-(buff.colossal_might.stack>=10))|!(buff.revenge.up|(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=50)&(buff.battle_stance.up|buff.ignore_pain.remains>0|fight_remains<=6|rage>=55)))))&rage.deficit<=10+(5+(3+3*talent.thorims_might.enabled*talent.flashing_skies.enabled)*buff.thunder_blast.up)*(1+0.5*buff.violent_outburst.up*(buff.thunder_blast.up&(buff.severe_thunder.up|buff.thunder_blast.stack=2|spell_targets.thunder_clap>=3|cooldown.shield_slam.remains>gcd.remains)))*(1+0.5*buff.last_stand.up*talent.unnerving_focus.enabled)
+actions+=/ignore_pain,use_off_gcd=1,if=cooldown.ravager.remains<=gcd.remains&rage.deficit<=10+10
+actions+=/ignore_pain,use_off_gcd=1,if=cooldown.demoralizing_shout.remains<=gcd.remains&talent.booming_voice.enabled&rage.deficit<=10+20
+actions+=/ignore_pain,use_off_gcd=1,if=cooldown.champions_spear.remains<=gcd.remains&rage.deficit<=10+10
+actions+=/ignore_pain,use_off_gcd=1,if=cooldown.shield_charge.remains<=gcd.remains&rage.deficit<=10+20
+actions+=/ignore_pain,use_off_gcd=1,if=cooldown.shield_slam.remains<=gcd.remains&rage.deficit<=10+(15+2*talent.heavy_repercussions.enabled+3*talent.practiced_strikes.enabled)*(1+0.5*buff.violent_outburst.up)
+actions+=/ignore_pain,use_off_gcd=1,if=cooldown.thunder_clap.remains<=gcd.remains&rage.deficit<=10+(5+(2+3*talent.thorims_might.enabled*talent.flashing_skies.enabled)*buff.thunder_blast.up)
 
 actions+=/avatar
 actions+=/use_item,slot=trinket1,if=!trinket.1.is.tome_of_lights_devotion|buff.inner_resilience.up
@@ -64,8 +42,7 @@ actions+=/ancestral_call
 actions+=/bag_of_tricks
 
 actions+=/ravager
-actions+=/thunderous_roar
-actions+=/wrecking_throw
+# actions+=/wrecking_throw
 actions+=/champions_spear
 actions+=/demoralizing_shout,if=talent.booming_voice.enabled
 actions+=/demolish,if=talent.sudden_death.enabled&buff.colossal_might.stack>=7
@@ -84,12 +61,15 @@ actions.colossus+=/revenge,if=spell_targets.revenge>=3-(buff.colossal_might.stac
 actions.colossus+=/thunder_clap,if=!buff.violent_outburst.up
 actions.colossus+=/revenge,if=buff.revenge.up|(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=50)&(buff.battle_stance.up|buff.ignore_pain.remains>0|fight_remains<=6|rage>=55)
 
-actions.thane+=/execute,if=buff.sudden_death.up|rage>=20&(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=70)&(buff.battle_stance.up|buff.ignore_pain.remains>0|fight_remains<=6|rage>=75)
-actions.thane+=/thunder_blast,if=buff.severe_thunder.up
-actions.thane+=/thunder_blast,if=buff.thunder_blast.stack=2
-actions.thane+=/thunder_blast,if=spell_targets.thunder_clap>=3
-actions.thane+=/shield_slam,if=buff.burst_of_power.up
-actions.thane+=/shield_slam
+# actions.thane+=/thunder_blast,if=buff.thunder_blast.stack=2
+# actions.thane+=/thunder_blast,if=spell_targets.thunder_clap>=3
+# actions.thane+=/shield_slam,if=buff.burst_of_power.up
+# actions.thane+=/shield_slam,if=buff.phalanx.up
 actions.thane+=/thunder_blast
-actions.thane+=/thunder_clap,if=!buff.violent_outburst.up
+actions.thane+=/thunder_clap,if=buff.ravager.up
+# actions.thane+=/thunder_clap,if=buff.avatar.up
+actions.thane+=/shield_slam
+actions.thane+=/thunder_clap
+actions.thane+=/execute,if=buff.sudden_death.up|rage>=20&(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=70)&(buff.battle_stance.up|buff.ignore_pain.remains>0|fight_remains<=6|rage>=75)
+actions.thane+=/wrecking_throw
 actions.thane+=/revenge,if=buff.revenge.up|(buff.shield_block.remains>1|fight_remains<=buff.shield_block.remains+3|rage>=50)&(buff.battle_stance.up|buff.ignore_pain.remains>0|fight_remains<=6|rage>=55)
