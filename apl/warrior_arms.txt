@@ -55,6 +55,10 @@ actions+=/invoke_external_buff,name=power_infusion,if=debuff.colossus_smash.up&f
 # actions+=/run_action_list,name=slayer_aoe,if=talent.slayers_dominance&active_enemies>2
 # actions+=/run_action_list,name=slayer_execute,target_if=min:target.health.pct,if=talent.slayers_dominance&variable.execute_phase
 # actions+=/run_action_list,name=slayer_st,if=talent.slayers_dominance
+
+actions+=/rend,if=dot.rend_dot.refreshable
+#actions.colossus=rend,target_if=min:dot.rend_dot.remains,if=dot.rend_dot.refreshable
+actions+=/sweeping_strikes,if=active_enemies>=2&(cooldown.colossus_smash.remains>10&buff.sweeping_strikes.down|!talent.broad_strokes)
 actions+=/avatar
 actions+=/ravager,if=cooldown.colossus_smash.remains<=gcd
 #&talent.cleave
@@ -64,18 +68,15 @@ actions+=/demolish,if=debuff.colossus_smash.up&(buff.colossal_might.stack=10|deb
 actions+=/champions_spear
 actions+=/run_action_list,name=colossus,if=talent.demolish
 
-actions.colossus=rend,if=dot.rend_dot.refreshable
-#actions.colossus=rend,target_if=min:dot.rend_dot.remains,if=!dot.rend_dot.remains
-actions.colossus+=/sweeping_strikes,if=active_enemies>=2&(cooldown.colossus_smash.remains&buff.sweeping_strikes.down|!talent.broad_strokes)
-actions.colossus+=/cleave,if=active_enemies>=3
-actions.colossus+=/heroic_strike
+actions.colossus=cleave,if=active_enemies>=3
+actions.colossus+=/heroic_strike,if=active_enemies<=2
 actions.colossus+=/mortal_strike
 actions.colossus+=/overpower
 actions.colossus+=/execute,if=buff.sudden_death.up
 actions.colossus+=/cleave,if=active_enemies=2
-#&buff.ravager.remains&buff.collateral_damage.stack=3
 actions.colossus+=/wrecking_throw
-actions.colossus+=/slam
+actions.colossus+=/slam,if=active_enemies<=2
+actions.colossus+=/rend
 
 
 
