@@ -7,6 +7,10 @@ position=back
 
 # Key CL
 talents=CcEAAAAAAAAAAAAAAAAAAAAAAgZmxsMzMzYGAAAghphxwMbLzMzMjZGzMAAAAAGbmB2iBsZGDLwAzwGNGsAMDGDmNz2gZGAwMzwA
+# Raid SL
+#talents=CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzMzMDAAAghphxYmxyMzMzgxMDAAAAgZWmZAZMWWGYBMgZYCZGsBMjNz2YwMGgZGAmxwA
+# Raid SL 2T
+#talents=CcEAAAAAAAAAAAAAAAAAAAAAAAzMzsMzYmZAAAAMMNMGzwyMzMzgxMDAAAAgZWmZgtMGLLDsAGwMMhMD2AzM2MbjBzsNAzMAMjhB
 
 head=night_enders_tusks,id=249952,bonus_id=12806/13335,gem_id=240983,enchant_id=7961
 neck=ribbon_of_coiled_malice,id=249337,bonus_id=12806/13335,gem_id=240906
