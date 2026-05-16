@@ -63,10 +63,11 @@ actions+=/avatar
 actions+=/ravager,if=cooldown.colossus_smash.remains<=gcd
 #&talent.cleave
 actions+=/colossus_smash
-actions+=/bladestorm
+actions+=/bladestorm,if=debuff.colossus_smash.up
 actions+=/demolish,if=debuff.colossus_smash.up&(buff.colossal_might.stack=10|debuff.colossus_smash.remains<3)
 actions+=/champions_spear
 actions+=/run_action_list,name=colossus,if=talent.demolish
+actions+=/run_action_list,name=slayer,if=talent.slayers_dominance
 
 actions.colossus=cleave,if=active_enemies>=3
 actions.colossus+=/heroic_strike,if=active_enemies<=2
@@ -77,6 +78,19 @@ actions.colossus+=/cleave,if=active_enemies=2
 actions.colossus+=/wrecking_throw
 actions.colossus+=/slam,if=active_enemies<=2
 actions.colossus+=/rend
+
+actions.slayer=heroic_strike,if=active_enemies<=2
+#actions.slayer+=/execute,if=buff.sudden_death.up
+actions.slayer+=/mortal_strike
+actions.slayer+=/execute
+#actions.slayer+=/cleave,if=active_enemies=2&buff.collateral_damage.stack=3
+actions.slayer+=/overpower
+#actions.slayer+=/cleave,if=talent.mass_execution&target.health.pct<35
+#actions.slayer+=/whirlwind,if=active_enemies=2&buff.collateral_damage.stack=3
+#actions.slayer+=/rend,if=dot.rend_dot.remains<=5
+actions.slayer+=/slam,if=active_enemies<=2
+actions.slayer+=/wrecking_throw,if=active_enemies=1
+actions.slayer+=/storm_bolt,if=buff.bladestorm.up
 
 
 
