@@ -56,9 +56,9 @@ actions+=/invoke_external_buff,name=power_infusion,if=debuff.colossus_smash.up&f
 # actions+=/run_action_list,name=slayer_execute,target_if=min:target.health.pct,if=talent.slayers_dominance&variable.execute_phase
 # actions+=/run_action_list,name=slayer_st,if=talent.slayers_dominance
 
-actions+=/rend,if=dot.rend_dot.refreshable
+actions+=/cleave,if=dot.rend_dot.refreshable
 #actions+=/rend,target_if=min:dot.rend_dot.remains,if=dot.rend_dot.refreshable
-actions+=/sweeping_strikes,if=active_enemies>=2&(cooldown.colossus_smash.remains>10&buff.sweeping_strikes.down|!talent.broad_strokes)
+actions+=/sweeping_strikes,if=active_enemies>=2
 actions+=/avatar
 actions+=/ravager,if=cooldown.colossus_smash.remains<=gcd
 actions+=/colossus_smash
@@ -84,8 +84,8 @@ actions.slayer+=/execute,if=buff.sudden_death.up
 actions.slayer+=/overpower,if=talent.dreadnaught&active_enemies>=3
 actions.slayer+=/mortal_strike
 #,if=!variable.execute_phase|buff.executioners_precision.stack=2
-actions.slayer+=/overpower
 actions.slayer+=/execute
+actions.slayer+=/overpower
 actions.slayer+=/slam,if=active_enemies<=2
 actions.slayer+=/wrecking_throw
 actions.slayer+=/rend
